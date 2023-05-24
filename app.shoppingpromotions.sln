@@ -1,0 +1,58 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.4.33027.239
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "app.shoppingpromotions.host", "app.shoppingpromotions.host\app.shoppingpromotions.host.csproj", "{DC897FE2-2280-4347-9DF7-92DAEC4D5A89}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{A9643A81-0B11-4E22-B8A7-74E509F103EF}"
+	ProjectSection(SolutionItems) = preProject
+		readme.md = readme.md
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{C39E8296-6A8F-47F9-97B6-7D8755D03496}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Api", "Api", "{FED86099-FAD2-4505-993B-00A5BCF87C2E}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Core", "Core", "{3A748D4C-0E60-42CF-BC12-FF82E0FAD3C1}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Infrastructure", "Infrastructure", "{E2CD98F1-77B1-4A57-98D5-AD7964296F99}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "app.shoppingpromotions.domain", "app.shoppingpromotions.domain\app.shoppingpromotions.domain.csproj", "{E01BB370-26DA-4305-A37E-BAB78E747C90}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "app.shoppingpromotions.infrastructure", "app.shoppingpromotions.infrastructure\app.shoppingpromotions.infrastructure.csproj", "{1C153B67-557B-4EAC-8BE4-68030277B1D2}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{DC897FE2-2280-4347-9DF7-92DAEC4D5A89}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DC897FE2-2280-4347-9DF7-92DAEC4D5A89}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DC897FE2-2280-4347-9DF7-92DAEC4D5A89}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DC897FE2-2280-4347-9DF7-92DAEC4D5A89}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E01BB370-26DA-4305-A37E-BAB78E747C90}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E01BB370-26DA-4305-A37E-BAB78E747C90}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E01BB370-26DA-4305-A37E-BAB78E747C90}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E01BB370-26DA-4305-A37E-BAB78E747C90}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1C153B67-557B-4EAC-8BE4-68030277B1D2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1C153B67-557B-4EAC-8BE4-68030277B1D2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1C153B67-557B-4EAC-8BE4-68030277B1D2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1C153B67-557B-4EAC-8BE4-68030277B1D2}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{DC897FE2-2280-4347-9DF7-92DAEC4D5A89} = {FED86099-FAD2-4505-993B-00A5BCF87C2E}
+		{FED86099-FAD2-4505-993B-00A5BCF87C2E} = {C39E8296-6A8F-47F9-97B6-7D8755D03496}
+		{3A748D4C-0E60-42CF-BC12-FF82E0FAD3C1} = {C39E8296-6A8F-47F9-97B6-7D8755D03496}
+		{E2CD98F1-77B1-4A57-98D5-AD7964296F99} = {C39E8296-6A8F-47F9-97B6-7D8755D03496}
+		{E01BB370-26DA-4305-A37E-BAB78E747C90} = {3A748D4C-0E60-42CF-BC12-FF82E0FAD3C1}
+		{1C153B67-557B-4EAC-8BE4-68030277B1D2} = {E2CD98F1-77B1-4A57-98D5-AD7964296F99}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {3A0A1D1E-5A06-4532-948B-2AFF3730EBF5}
+	EndGlobalSection
+EndGlobal
