@@ -9,5 +9,4 @@
         public string Category { get; set; }
         public decimal PointsPerDollarSpent { get; set; }
     }
-
 }
