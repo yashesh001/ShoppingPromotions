@@ -25,7 +25,14 @@ namespace app.shoppingpromotions.infrastructure
 
         public void Set<T>(string key, T value, TimeSpan expiration)
         {
-            _cache.Add(key, value);
+            if (_cache.ContainsKey(key))
+            {
+                _cache[key] = value;
+            }
+            else
+            {
+                _cache.TryAdd(key, value);
+            }
         }
 
         public bool Remove(string key)
