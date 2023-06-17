@@ -6,12 +6,12 @@ namespace app.shoppingpromotions.host.Services
     public class CartService : ICartService
     {
         private readonly IProductRepository _productRepository;
-        private readonly IDiscountService _discountService;
+        private readonly IProductDiscountService _discountService;
         private readonly ICartRepository _cartRepository;
         private readonly IPointsService _pointsService;
 
         public CartService(IProductRepository productRepository, 
-            IDiscountService discountService, 
+            IProductDiscountService discountService, 
             IPointsService pointsService,
             ICartRepository cartRepository)
         {

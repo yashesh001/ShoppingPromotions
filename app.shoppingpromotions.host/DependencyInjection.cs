@@ -11,7 +11,7 @@ namespace app.shoppingpromotions.host
         {
             return services
                 .AddScoped<ICartService, CartService>()
-                .AddScoped<IDiscountService, DiscountService>()
+                .AddScoped<IProductDiscountService, ProductDiscountService>()
                 .AddScoped<IPointsService, PointsService>()
                 .AddHttpClient()
                 .AddOptions()

@@ -24,7 +24,7 @@ namespace app.shoppingpromotions.infrastructure
             {
                 serviceCollection.AddSingleton<IProductRepository, StaticProductRepository>();
                 serviceCollection.AddSingleton<IPointsPromotionRepository, StaticPointsPromotionRepository>();
-                serviceCollection.AddSingleton<IDiscountPromotionRepository, StaticDiscountPromotionRepository>();
+                serviceCollection.AddSingleton<IProductDiscountPromotionRepository, StaticProductDiscountPromotionRepository>();
                 serviceCollection.AddSingleton<ICacheWrapper, InMemoryCacheWrapper>();
             }
             else
@@ -52,7 +52,7 @@ namespace app.shoppingpromotions.infrastructure
 
                 serviceCollection.AddScoped<IProductRepository, ProductRepository>();
                 serviceCollection.AddScoped<IPointsPromotionRepository, PointsPromotionRepository>();
-                serviceCollection.AddScoped<IDiscountPromotionRepository, DiscountPromotionRepository>();
+                serviceCollection.AddScoped<IProductDiscountPromotionRepository, ProductDiscountPromotionRepository>();
             }
 
             serviceCollection.AddScoped<ICartRepository, CartRepository>();
