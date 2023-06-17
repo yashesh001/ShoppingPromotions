@@ -6,7 +6,8 @@
         public string PromotionName { get; set; }
         public DateTime StartDate { get; set; }
         public DateTime EndDate { get; set; }
-        public decimal DiscountPercent { get; set; }
+        public decimal DiscountPercent { get; set; } = 0.0m;
+        public decimal PriceDiscount { get; set; } = 0.0m;
     }
 
 }

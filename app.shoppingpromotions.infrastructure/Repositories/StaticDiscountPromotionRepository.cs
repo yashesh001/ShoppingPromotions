@@ -15,18 +15,18 @@ namespace app.shoppingpromotions.infrastructure.Repositories
                 new DiscountPromotion()
                 {
                     DiscountPromotionId = "DP001",
-                    PromotionName = "Fuel Discount Promo",
-                    StartDate = new DateTime(2020, 1, 1),
-                    EndDate = new DateTime(2020, 2, 15),
-                    DiscountPercent = 20
+                    PromotionName = "Current month special on VB",
+                    StartDate = new DateTime(2023, 6, 1),
+                    EndDate = new DateTime(2023, 6, 30),
+                    PriceDiscount = 2
                 },
                 new DiscountPromotion()
                 {
                     DiscountPromotionId = "DP002",
-                    PromotionName = "Happy Promo",
-                    StartDate = new DateTime(2020, 3, 2),
-                    EndDate = new DateTime(2020, 3, 20),
-                    DiscountPercent = 15
+                    PromotionName = "Special 10% off on Crown Lager",
+                    StartDate = new DateTime(2023, 6, 10),
+                    EndDate = new DateTime(2023, 6, 20),
+                    DiscountPercent = 5
                 }
             };
 
@@ -35,11 +35,11 @@ namespace app.shoppingpromotions.infrastructure.Repositories
                 new DiscountPromotionProduct()
                 {
                     DiscountPromotionId = "DP001",
-                    ProductId = "PRD02"
+                    ProductId = "PRD01"
                 },
                 new DiscountPromotionProduct()
                 {
-                    DiscountPromotionId = "DP001",
+                    DiscountPromotionId = "DP002",
                     ProductId = "PRD02"
                 }
             };

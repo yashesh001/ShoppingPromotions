@@ -73,17 +73,24 @@ namespace app.shoppingpromotions.host.Services
                 if (product == null)    //ToDo: Potentially a scenario where Product is out of stock / discontinued / not found etc.; Need to handle it appropriately.
                     continue;
 
-                cartItems.Add(new ResponseCartItem { ProductId = item.ProductId, Price = product.UnitPrice, Quantity = item.Quantity });
-                var productTotalAmount = product.UnitPrice * item.Quantity;
-                totalAmount += productTotalAmount;
+                var cartItem = new ResponseCartItem
+                {
+                    ProductId = item.ProductId,
+                    Price = product.UnitPrice,
+                    Quantity = item.Quantity
+                };
+
+                totalAmount += cartItem.TotalAmount;
 
                 // Apply discount
-                decimal itemDiscount = await _discountService.GetDiscountForProductAsync(item.ProductId, request.TransactionDate);
-                discountApplied += itemDiscount * 0.01m * productTotalAmount;
+                cartItem.ItemDiscount = await _discountService.GetDiscountForProductAsync(product, request.TransactionDate);
+                discountApplied += cartItem.TotalDiscount;
 
                 // Calculate points earned
                 int itemPoints = await _pointsService.GetPointsForProductAsync(product.Category, request.TransactionDate);
-                pointsEarned += (int)(itemPoints * productTotalAmount);
+                pointsEarned += (int)(itemPoints * (product.UnitPrice * item.Quantity));
+
+                cartItems.Add(cartItem);
             }
 
             decimal grandTotal = totalAmount - discountApplied;

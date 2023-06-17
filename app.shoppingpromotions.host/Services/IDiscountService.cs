@@ -1,7 +1,9 @@
-﻿namespace app.shoppingpromotions.host.Services
+﻿using app.shoppingpromotions.infrastructure.Entities;
+
+namespace app.shoppingpromotions.host.Services
 {
     public interface IDiscountService
     {
-        Task<decimal> GetDiscountForProductAsync(string productId, DateTime transactionDate);
+        Task<decimal> GetDiscountForProductAsync(Product product, DateTime transactionDate);
     }
 }

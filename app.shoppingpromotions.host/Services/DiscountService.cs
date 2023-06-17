@@ -1,4 +1,5 @@
-﻿using app.shoppingpromotions.infrastructure.Interfaces;
+﻿using app.shoppingpromotions.infrastructure.Entities;
+using app.shoppingpromotions.infrastructure.Interfaces;
 
 namespace app.shoppingpromotions.host.Services
 {
@@ -12,16 +13,29 @@ namespace app.shoppingpromotions.host.Services
             _discountPromotionRepository = discountPromotionRepository;
         }
 
-        public async Task<decimal> GetDiscountForProductAsync(string productId, DateTime transactionDate)
+        public async Task<decimal> GetDiscountForProductAsync(Product product, DateTime transactionDate)
         {
-            var currentDiscountPromotion = await _discountPromotionRepository.GetActiveDiscountPromotionAsync(productId, transactionDate);
-            if (currentDiscountPromotion == null)
+            decimal itemDiscount = 0.0m;
+            var currentDiscountPromotion = await _discountPromotionRepository.GetActiveDiscountPromotionAsync(product.ProductId, transactionDate);
+
+            if (currentDiscountPromotion == null) // No active discount promotion
+                return itemDiscount;
+
+            switch (currentDiscountPromotion.DiscountPercent)
             {
-                return 0.0m; // No active discount promotion
+                case > 0:
+                    itemDiscount = currentDiscountPromotion.DiscountPercent * 0.01m * product.UnitPrice;
+                    break;
+                default:
+                    if (currentDiscountPromotion.PriceDiscount > 0)
+                    {
+                        itemDiscount = currentDiscountPromotion.PriceDiscount;
+                    }
+
+                    break;
             }
 
-            return currentDiscountPromotion.DiscountPercent;
+            return itemDiscount;
         }
     }
-
 }
