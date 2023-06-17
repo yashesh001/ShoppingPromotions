@@ -10,7 +10,7 @@ namespace app.shoppingpromotions.host
             , bool isDevelopmentEnvironment)
         {
             return services
-                .AddScoped<IShoppingBasketService, ShoppingBasketService>()
+                .AddScoped<ICartService, CartService>()
                 .AddScoped<IDiscountService, DiscountService>()
                 .AddScoped<IPointsService, PointsService>()
                 .AddHttpClient()

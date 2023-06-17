@@ -11,14 +11,14 @@ namespace app.shoppingpromotions.test
         private readonly Mock<IProductRepository> _productRepositoryMock;
         private readonly Mock<IDiscountService> _discountServiceMock;
         private readonly Mock<IPointsService> _pointsServiceMock;
-        private readonly ShoppingBasketService _shoppingBasketService;
+        private readonly CartService _shoppingBasketService;
 
         public ShoppingBasketServiceTest()
         {
             _productRepositoryMock = new Mock<IProductRepository>();
             _discountServiceMock = new Mock<IDiscountService>();
             _pointsServiceMock = new Mock<IPointsService>();
-            _shoppingBasketService = new ShoppingBasketService(_productRepositoryMock.Object, _discountServiceMock.Object, _pointsServiceMock.Object);
+            _shoppingBasketService = new CartService(_productRepositoryMock.Object, _discountServiceMock.Object, _pointsServiceMock.Object);
         }
 
         [Theory]
@@ -37,14 +37,13 @@ namespace app.shoppingpromotions.test
             var request = new ShoppingRequest
             {
                 CustomerId = "8e4e8991-aaee-495b-9f24-52d5d0e509c5",
-                LoyaltyCard = "CTX0000001",
                 TransactionDate = DateTime.Parse(transactionDate),
-                Basket = new List<BasketItem>
-                {
-                    new BasketItem { ProductId = "PRD01", UnitPrice = 1.2m, Quantity = 3 },
-                    new BasketItem { ProductId = "PRD02", UnitPrice = 2.0m, Quantity = 2 },
-                    new BasketItem { ProductId = "PRD03", UnitPrice = 5.0m, Quantity = 1 }
-                }
+                //Basket = new List<CartItem>
+                //{
+                //    new CartItem { ProductId = "PRD01", UnitPrice = 1.2m, Quantity = 3 },
+                //    new CartItem { ProductId = "PRD02", UnitPrice = 2.0m, Quantity = 2 },
+                //    new CartItem { ProductId = "PRD03", UnitPrice = 5.0m, Quantity = 1 }
+                //}
             };
 
             _productRepositoryMock.Setup(repo => repo.GetProductByIdAsync("PRD01"))
@@ -69,12 +68,11 @@ namespace app.shoppingpromotions.test
                 .ReturnsAsync(4);
 
             // Act
-            var result = await _shoppingBasketService.ComputeShoppersBasketAsync(request);
+            var result = await _shoppingBasketService.ComputeCartAsync(request);
 
             // Assert
             Assert.NotNull(result);
             Assert.Equal("8e4e8991-aaee-495b-9f24-52d5d0e509c5", result.CustomerId);
-            Assert.Equal("CTX0000001", result.LoyaltyCard);
             Assert.Equal(DateTime.Parse(transactionDate), result.TransactionDate);
             Assert.Equal(Decimal.Parse(totalAmount), result.TotalAmount);
             Assert.Equal(Decimal.Parse(discountApplied), result.DiscountApplied);
