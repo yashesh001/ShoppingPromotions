@@ -9,7 +9,6 @@ namespace app.shoppingpromotions.host.Services
         private readonly IDiscountService _discountService;
         private readonly ICartRepository _cartRepository;
         private readonly IPointsService _pointsService;
-        private readonly IDictionary<string, List<CartItem>> _cartItems;
 
         public CartService(IProductRepository productRepository, 
             IDiscountService discountService, 
@@ -20,7 +19,6 @@ namespace app.shoppingpromotions.host.Services
             _discountService = discountService;
             _pointsService = pointsService;
             _cartRepository = cartRepository;
-            _cartItems = new Dictionary<string, List<CartItem>>();
         }
 
         public async Task<ShoppingResponse> AddItem(ShoppingRequest request)
@@ -66,6 +64,7 @@ namespace app.shoppingpromotions.host.Services
             decimal totalAmount = 0;
             decimal discountApplied = 0;
             int pointsEarned = 0;
+            var cartItems = new List<ResponseCartItem>();
 
             var allCartItemsForCustomer = _cartRepository.GetCustomerCartItems(request.CustomerId);
             foreach (var item in allCartItemsForCustomer)
@@ -74,6 +73,7 @@ namespace app.shoppingpromotions.host.Services
                 if (product == null)    //ToDo: Potentially a scenario where Product is out of stock / discontinued / not found etc.; Need to handle it appropriately.
                     continue;
 
+                cartItems.Add(new ResponseCartItem { ProductId = item.ProductId, Price = product.UnitPrice, Quantity = item.Quantity });
                 var productTotalAmount = product.UnitPrice * item.Quantity;
                 totalAmount += productTotalAmount;
 
@@ -95,7 +95,8 @@ namespace app.shoppingpromotions.host.Services
                 TotalAmount = totalAmount,
                 DiscountApplied = discountApplied,
                 GrandTotal = grandTotal,
-                PointsEarned = pointsEarned
+                PointsEarned = pointsEarned,
+                CartItems = cartItems
             };
 
             return response;

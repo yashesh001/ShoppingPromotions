@@ -8,6 +8,7 @@ namespace app.shoppingpromotions.host.Validators
         public ShoppingRequestValidator()
         {
             RuleFor(dto => dto.CustomerId).NotEmpty().WithMessage("Customer ID is required.");
+            RuleFor(dto => dto.ProductId).NotEmpty().WithMessage("Product ID is required.");
             RuleFor(dto => dto.TransactionDate).NotEmpty().WithMessage("Transaction date is required.");
         }
     }
